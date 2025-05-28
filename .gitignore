@@ -271,13 +271,6 @@ conversation_cache/
 plugins_cache/
 plugin_data/
 
-# 插件文件
-plugins1/
-plugins1
-"plugins 1"/
-plugins\ 1/
-plugin/
-
 
 # 语音文件缓存
 voice_cache/
