@@ -1,0 +1,306 @@
+# .gitignore for dify-on-wechat-padpro
+# 由AI助手创建，用于忽略不应该上传到GitHub的文件
+
+# =============================================================================
+# 配置文件 - 包含敏感信息，不应上传
+# =============================================================================
+config.json
+config-*.json
+!config-template.json
+!config_wechatpadpro_example.json
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# =============================================================================
+# Python相关
+# =============================================================================
+# 字节码文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 分发/打包
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# 单元测试/覆盖率报告
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# =============================================================================
+# 日志文件
+# =============================================================================
+logs/
+*.log
+log/
+*.log.*
+
+# =============================================================================
+# 临时文件和缓存
+# =============================================================================
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# 图片缓存
+qrcode/
+images/
+cache/
+.cache/
+
+# 微信相关临时文件
+*.dat
+*.db
+*.sqlite
+*.sqlite3
+
+# =============================================================================
+# 系统文件
+# =============================================================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# IDE和编辑器
+# =============================================================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# 运行时文件
+# =============================================================================
+# 进程ID文件
+*.pid
+
+# 会话文件
+sessions/
+session/
+
+# 设备信息文件（WeChatPadPro相关）
+device_info.json
+login_info.json
+user_info.json
+
+# 聊天记录和用户数据
+chatrooms/
+contacts/
+messages/
+*.chatroom
+*.contact
+
+# =============================================================================
+# 安全相关
+# =============================================================================
+# 密钥文件
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+
+# 认证文件
+auth/
+credentials/
+secrets/
+
+# =============================================================================
+# 备份文件
+# =============================================================================
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+
+# =============================================================================
+# 压缩文件（通常不需要版本控制）
+# =============================================================================
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# =============================================================================
+# 特定于项目的忽略
+# =============================================================================
+# WeChatPadPro相关
+wechatpadpro_data/
+wechat_data/
+
+# Dify相关
+dify_cache/
+conversation_cache/
+
+# 插件缓存
+plugins_cache/
+plugin_data/
+
+# 插件文件
+plugins1/
+plugins1
+"plugins 1"/
+plugins\ 1/
+plugin/
+
+
+# 语音文件缓存
+voice_cache/
+audio_cache/
+*.silk
+*.amr
+*.wav
+*.mp3
+*.ogg
+
+# 图片文件缓存
+image_cache/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.webp
+!docs/*.png
+!docs/*.jpg
+!docs/*.gif
+
+# 测试文件
+test_*.py
+*_test.py
+tests/temp/
