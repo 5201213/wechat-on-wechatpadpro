@@ -44,9 +44,7 @@ pip install -r requirements-optional.txt
 
 ```json
 {
-  "dify_api_base": "https://api.dify.ai/v1",
-  "dify_api_key": "app-xxxx",       # 选填
-  "dify_app_type": "chatflow",      # 支持chatbot，agent，workflow，chatflow
+
   "channel_type": "wechatpadpro",
   "wechatpadpro_api_host": "127.0.0.1",    # 修改为你部署的WeChatPadPro协议的主机IP
   "wechatpadpro_api_port": 8059,           # WeChatPadPro协议API端口
@@ -54,37 +52,7 @@ pip install -r requirements-optional.txt
   "wechatpadpro_api_key": "",              # TOKEN_KEY（普通key，可由管理key自动生成）
   "wechatpadpro_admin_key": "",            # ADMIN_KEY（管理key，用于生成普通key）
   "log_level": "INFO",
-  "group_chat_prefix": ["xy","晓颜","@晓颜"],   # 改成你自己的bot昵称
-  "group_name_white_list": [
-        "测试群1",
-        "测试群2",
-        "测试群3"],                 # 全开的话改成"ALL GROUP"
-  "image_recognition": true,
-  "speech_recognition": false,
-  "voice_reply_voice": false,
-  "voice_to_text": "dify",
-  "text_to_voice": "dify",
-  "character_desc": "你是一个通用人工智能助手",  # 改成你自己的人设提示词
-  "conversation_max_tokens": 500,
-  "coze_api_base": "https://api.coze.cn/open_api/v2",
-  "coze_api_key": "",              # 选填
-  "coze_bot_id": "",               # 选填
-  "dashscope_api_key": "",         # 选填
-  "deepseek_api_base": "https://api.deepseek.com/v1",
-  "deepseek_api_key": "",          # 选填
-  "expires_in_seconds": 1600,
-  "group_speech_recognition": false,
-  "model": "qwen-max",             # 改成你自己的默认模型
-  "no_need_at": true,
-  "siliconflow_api_base": "https://api.siliconflow.cn/v1/chat/completions",
-  "siliconflow_api_key": "",       # 选填
-  "siliconflow_model": "deepseek-ai/DeepSeek-V3",
-  "single_chat_prefix": [""],      # 选填
-  "single_chat_reply_prefix": "",  # 选填
-  "temperature": 0.5,
-  "zhipu_ai_api_base": "https://open.bigmodel.cn/api/paas/v4",
-  "zhipu_ai_api_key": "",          # 选填
-  "zhipuai_model": "glm-4-flash-250414"
+  
 }
 ```
 
