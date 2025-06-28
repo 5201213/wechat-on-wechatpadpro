@@ -1,9 +1,12 @@
-# Dify-on-WeChat-PadPro
+# LLM Bot on WeChat (WeChatPadPro Edition)
 
-基于WeChatPadPro协议的Dify-on-wechat项目，此版本为优化版，已修复大部分已知bug（图片上传、语音发送、过滤非用户消息、XML消息发送等）。
+基于WeChatPadPro协议的wechat-on-wechapadpro项目，此版本为优化版，已修复大部分已知bug（图片上传、语音发送、过滤非用户消息、XML消息发送等）。
 请自行查看WeChatPadPro协议的部署方法，不再赘述。
-协议来源：https://github.com/WeChatPadPro/WeChatPadPro
-原版链接：https://github.com/AnCool-OvO/dify-on-wechat-ipad
+本项目基于 `chatgpt-on-wechat` 框架，并深度整合 `WeChatPadPro` 协议，旨在为个人微信账号提供一个稳定、高效、功能丰富的智能对话机器人解决方案。此版本为持续优化版，修复了登录、消息处理中的多个已知问题，并对代码结构进行了重构。
+协议来源: [WeChatPadPro](https://github.com/WeChatPadPro/WeChatPadPro)
+原始框架: [chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)
+请自行查看WeChatPadPro协议的部署方法，不再赘述。
+
 
 ## 功能特点
 
@@ -24,8 +27,8 @@
 ### 1. 下载源码
 
 ```bash
-git clone https://github.com/your-repo/dify-on-wechat-padpro.git
-cd dify-on-wechat-padpro
+git clone https://github.com/5201213/wechat-on-wechatpadpro.git
+cd wechat-on-wechatpadpro
 ```
 
 ### 2. 安装依赖
@@ -40,17 +43,17 @@ pip install -r requirements-optional.txt
 
 ### 3. 配置文件
 
-复制`config-template.json`为`config.json`，并修改关键配置（在原版基础上增加了dify以外的LLM选项，如coze、qwen、硅基免费模型等）：
+复制 `config-template.json` 为 `config.json`，并根据你的实际情况修改关键配置：
 
 ```json
 {
 
-  "channel_type": "wechatpadpro",
-  "wechatpadpro_api_host": "127.0.0.1",    # 修改为你部署的WeChatPadPro协议的主机IP
-  "wechatpadpro_api_port": 8059,           # WeChatPadPro协议API端口
-  "wechatpadpro_protocol_version": "8059", # WeChatPadPro协议版本
-  "wechatpadpro_api_key": "",              # TOKEN_KEY（普通key，可由管理key自动生成）
-  "wechatpadpro_admin_key": "",            # ADMIN_KEY（管理key，用于生成普通key）
+  "channel_type": "wxpad",
+   # WeChatPadPro协议版本配置
+  "wechatpadpro_base_url": "http://127.0.0.1:1239", #修改为你的服务器IP跟部署的端口
+  "wechatpadpro_admin_key": "YOUR_ADMIN_KEY_HERE", # ADMIN_KEY（管理key，用于生成普通key）
+  "wechatpadpro_user_key": null # TOKEN_KEY（普通key，可由管理key自动生成
+  "wechatpadpro_ws_url": "ws://IP:1239/ws/GetSyncMsg",#修改为你的服务器IP跟部署的端口
   "log_level": "INFO",
   
 }
@@ -61,8 +64,7 @@ pip install -r requirements-optional.txt
 ### 前置条件
 
 1. 确保已安装并启动WeChatPadPro协议服务
-2. 协议服务默认运行在 `127.0.0.1:8059`
-3. 获取有效的ADMIN_KEY（管理密钥）
+
 
 ### 启动步骤
 
@@ -92,7 +94,7 @@ pip install -r requirements-optional.txt
 
 ### WeChatPadPro协议服务问题
 - 确保WeChatPadPro协议服务正在运行
-- 检查8059端口是否被占用
+- 检查1239端口是否被占用
 - 验证ADMIN_KEY是否有效
 
 ### 登录问题
@@ -118,17 +120,17 @@ pip install -r requirements-optional.txt
 ## 目录结构
 
 ```
-dify-on-wechat-padpro/
+wechat-on-wechatpadpro/
 ├── channel/                         # 通道目录
-│   ├── wechatpadpro/               # WeChatPadPro通道实现
-│   │   ├── wechatpadpro_channel.py # 通道主文件
-│   │   └── wechatpadpro_message.py # 消息处理
+│   ├── wxpad/                      # WeChatPadPro通道实现
+│   │   ├── wxpad_channel.py        # 通道主文件
+│   │   └── wxpad_message.py        # 消息处理
 │   └── ...
 ├── lib/
-│   └── wechatpadpro/               # WeChatPadPro协议库
-│       └── WechatAPI/              # API接口实现
-│           ├── Client8059/         # 8059协议客户端
+│   └── wxpad/                       # WeChatPadPro协议库
+│       └── client.py               # 协议API客户端
 ├── config-template.json            # 配置模板
+├── config.json                     # 你的配置文件
 └── app.py                          # 主程序
 ```
 
@@ -158,7 +160,7 @@ dify-on-wechat-padpro/
 - **[DoW(dify-on-wechat)](https://github.com/hanfangyuan4396/dify-on-wechat)**: 提供Dify集成的核心功能
 
 ### 参考项目
-- **[dify-on-wechat-ipad](https://github.com/AnCool-OvO/dify-on-wechat-ipad)**: 原版项目基础
+- **[chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)**: 原版项目基础
 - **[xxxbot-pad](https://github.com/NanSsye/xxxbot-pad)**: iPad协议接入参考
 
 由于本人不会代码，此项目全由ai写作不好的地方欢迎提交Pull Request或Issue来帮助改进本项目！
