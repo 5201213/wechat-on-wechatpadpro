@@ -15,12 +15,12 @@ def create_channel(channel_type) -> Channel:
     if channel_type == "wx":
         from channel.wechat.wechat_channel import WechatChannel
         ch = WechatChannel()
-    elif channel_type == "wechatpadpro":
-        from channel.wechatpadpro.wechatpadpro_channel import WechatPadProChannel
-        ch = WechatPadProChannel()
     elif channel_type == "wxy":
         from channel.wechat.wechaty_channel import WechatyChannel
         ch = WechatyChannel()
+    elif channel_type == "wcf":
+        from channel.wechat.wcf_channel import WechatfChannel
+        ch = WechatfChannel()
     elif channel_type == "terminal":
         from channel.terminal.terminal_channel import TerminalChannel
         ch = TerminalChannel()
@@ -48,6 +48,12 @@ def create_channel(channel_type) -> Channel:
     elif channel_type == const.DINGTALK:
         from channel.dingtalk.dingtalk_channel import DingTalkChanel
         ch = DingTalkChanel()
+    elif channel_type == "wxpad":
+        from channel.wxpad.wxpad_channel import WxpadChannel
+        ch = WxpadChannel()
+    elif channel_type == "dpbot":
+        from channel.dpbot.dpbot_channel import DpBotChannel
+        ch = DpBotChannel()
     else:
         raise RuntimeError
     ch.channel_type = channel_type
