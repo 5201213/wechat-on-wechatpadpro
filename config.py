@@ -218,11 +218,10 @@ available_setting = {
     "web_port": 9899,
     # WeChatPadPro配置
     "wechatpadpro_base_url": "http://localhost:1239",
-    "wechatpadpro_admin_key": "12345",
+    "wechatpadpro_admin_key": "",
     "wechatpadpro_user_key": "",
     "wechatpadpro_ws_url": "ws://localhost:1239/ws/GetSyncMsg",
-    # DPBot配置
-    "dpbot_base_url": "http://127.0.0.1:8059",
+
     
     # 临时文件清理配置
     "tmp_cleanup_enabled": True,  # 是否启用临时文件自动清理
