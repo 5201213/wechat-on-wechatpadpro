@@ -51,9 +51,6 @@ def create_channel(channel_type) -> Channel:
     elif channel_type == "wxpad":
         from channel.wxpad.wxpad_channel import WxpadChannel
         ch = WxpadChannel()
-    elif channel_type == "dpbot":
-        from channel.dpbot.dpbot_channel import DpBotChannel
-        ch = DpBotChannel()
     else:
         raise RuntimeError
     ch.channel_type = channel_type
