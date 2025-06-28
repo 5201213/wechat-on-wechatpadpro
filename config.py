@@ -19,31 +19,15 @@ available_setting = {
     "error_reply": "我暂时遇到了一些问题，请您稍后重试~",
     # openai api配置
     "open_ai_api_key": "",  # openai api key
+    # openai apibase，当use_azure_chatgpt为true时，需要设置对应的api base
     "open_ai_api_base": "https://api.openai.com/v1",
-    "open_ai_model": "gpt-4o-mini",  # OpenAI 模型名称
     "proxy": "",  # openai使用的代理
     # chatgpt模型， 当use_azure_chatgpt为true时，其名称为Azure上model deployment名称
-    "model": "对话模型 [openAI, chatGPT, wenxin, xunfei, zhipuai, claude, qwen, dashscope, gemini, moonshot, coze, dify, deepseek，siliconflow]",   # 可选择: gpt-4o, pt-4o-mini, gpt-4-turbo, claude-3-sonnet, wenxin, moonshot, qwen-turbo, xunfei, glm-4, minimax, gemini等模型，全部可选模型详见common/const.py文件
+    "model": "gpt-3.5-turbo",  # 可选择: gpt-4o, pt-4o-mini, gpt-4-turbo, claude-3-sonnet, wenxin, moonshot, qwen-turbo, xunfei, glm-4, minimax, gemini等模型，全部可选模型详见common/const.py文件
     "bot_type": "",  # 可选配置，使用兼容openai格式的三方服务时候，需填"chatGPT"。bot具体名称详见common/const.py文件列出的bot_type，如不填根据model名称判断，
     "use_azure_chatgpt": False,  # 是否使用azure的chatgpt
     "azure_deployment_id": "",  # azure 模型部署名称
     "azure_api_version": "",  # azure api版本
-    # DeepSeek API配置
-    "deepseek_api_key": "",    # DeepSeek API key
-    "deepseek_api_base": "https://api.deepseek.com/v1",  # DeepSeek API base URL
-    "deepseek_model": "deepseek-chat",  # DeepSeek 模型名称
-    # Siliconflow API配置
-    "siliconflow_api_key": "", # 硅基流动 API key
-    "siliconflow_api_base": "https://api.siliconflow.cn/v1/chat/completions",
-    "siliconflow_model": "Qwen/Qwen2.5-7B-Instruct",  # SiliconFlow 默认模型
-    # WeChatPadPro通道配置
-    "wechatpadpro_protocol_version": "8059",
-    "wechatpadpro_api_host": "127.0.0.1",
-    "wechatpadpro_api_port": 8059,
-    "wechatpadpro_api_key": "",
-    "wechatpadpro_admin_key": "YOUR_ADMIN_KEY",
-
-
     # Bot触发配置
     "single_chat_prefix": ["bot", "@bot"],  # 私聊时文本需要包含该前缀才能触发机器人回复
     "single_chat_reply_prefix": "[bot] ",  # 私聊时自动回复的前缀，用于区分真人
@@ -78,7 +62,6 @@ available_setting = {
     "accept_friend_msg": "",  # 接受好友请求后发送的消息
     # chatgpt会话参数
     "expires_in_seconds": 3600,  # 无操作会话的过期时间
-    "image_expires_in_seconds": 7200,  # 图片消息缓存过期时间（秒）
     # 人格描述
     "character_desc": "你是ChatGPT, 一个由OpenAI训练的大型语言模型, 你旨在回答并解决人们的任何问题，并且可以使用多种语言与人交流。",
     "conversation_max_tokens": 1000,  # 支持上下文记忆的最多字符数
@@ -92,6 +75,9 @@ available_setting = {
     "presence_penalty": 0,
     "request_timeout": 180,  # chatgpt请求超时时间，openai接口默认设置为600，对于难问题一般需要较长时间
     "timeout": 120,  # chatgpt重试超时时间，在这个时间内，将会自动重试
+    # openai搜索配置
+    "openai_search_enabled": True,  # 是否启用OpenAI搜索功能
+    "max_tokens": 2000,  # 生成回复的最大token数
     # Baidu 文心一言参数
     "baidu_wenxin_model": "eb-instant",  # 默认使用ERNIE-Bot-turbo模型
     "baidu_wenxin_api_key": "",  # Baidu api key
@@ -118,10 +104,12 @@ available_setting = {
     "dashscope_api_key": "",
     # Google Gemini Api Key
     "gemini_api_key": "",
+    # Google Gemini API Base URL (for proxy/relay services)
+    "gemini_api_base": "",
     # dify配置
     "dify_api_base": "https://api.dify.ai/v1",
     "dify_api_key": "app-xxx",
-    "dify_app_type": "chatflow", # dify助手类型 chatbot(对应聊天助手或对话流)/agent(对应Agent)/workflow(对应工作流，则默认为chatbot
+    "dify_app_type": "chatbot", # dify助手类型 chatbot(对应聊天助手或对话流)/agent(对应Agent)/workflow(对应工作流，则默认为chatbot
     "dify_conversation_max_messages": 5, # dify目前不支持设置历史消息长度，暂时使用超过最大消息数清空会话的策略，缺点是没有滑动窗口，会突然丢失历史消息，当设置的值小于等于0，则不限制历史消息长度
     "dify_error_reply": "", # dify bot错误时给用户的回复
     # coze配置
@@ -129,6 +117,7 @@ available_setting = {
     "coze_api_key": "xxx",
     "coze_bot_id": "xxx",
     "coze_return_show_img": "false",
+    "coze_conversation_max_messages" : 20, # coze目前不支持设置历史消息长度，暂时使用超过最大消息数清空会话的策略，缺点是没有滑动窗口，会突然丢失历史消息
     # wework的通用配置
     "wework_smart": True,  # 配置wework是否使用已登录的企业微信，False为多开
     # 语音设置
@@ -188,23 +177,21 @@ available_setting = {
     "feishu_token": "",  # 飞书 verification token
     "feishu_bot_name": "",  # 飞书机器人的名字
     # 钉钉配置
-    "dingtalk_client_id": "",  # 钉钉机器人Client ID
+    "dingtalk_client_id": "",  # 钉钉机器人Client ID 
     "dingtalk_client_secret": "",  # 钉钉机器人Client Secret
     "dingtalk_card_enabled": False,
     ## gewechat配置
-    "gewechat_base_url": "",
-    "gewechat_download_url": "",
-    "gewechat_token": "",
-    "gewechat_app_id": "",
-    "gewechat_callback_url": "", # 回调地址，示例：http://172.17.0.1:9919/v2/api/callback/collect
-
+    # "gewechat_base_url": "",
+    # "gewechat_download_url": "",
+    # "gewechat_token": "",
+    # "gewechat_app_id": "",
+    # "gewechat_callback_url": "",
     # chatgpt指令自定义触发词
     "clear_memory_commands": ["#清除记忆"],  # 重置会话指令，必须以#开头
     # channel配置
-    "channel_type": "",  # 通道类型，支持：{wx,wxy,terminal,wechatmp,wechatmp_service,wechatcom_app,dingtalk}
+    "channel_type": "",  # 通道类型，支持：{wx,wxy,terminal,wechatmp,wechatmp_service,wechatcom_app,dingtalk,wxpad}
     "subscribe_msg": "",  # 订阅消息, 支持: wechatmp, wechatmp_service, wechatcom_app
     "debug": False,  # 是否开启debug模式，开启后会打印更多日志
-    "log_level": "INFO",  # 日志级别，可选：DEBUG, INFO, WARNING, ERROR
     "appdata_dir": "",  # 数据目录
     # 插件配置
     "plugin_trigger_prefix": "$",  # 规范插件提供聊天相关指令的前缀，建议不要和管理员指令前缀"#"冲突
@@ -213,12 +200,13 @@ available_setting = {
     "max_media_send_count": 3,  # 单次最大发送媒体资源的个数
     "media_send_interval": 1,  # 发送图片的事件间隔，单位秒
     # 智谱AI 平台配置
-    "zhipuai_model": "智谱AI模型 [glm-4v-plus(支持多图和视频), glm-4v-flash(仅支持单图)]",
-    "zhipu_ai_api_key": "",  # 智谱AI API密钥
-    "zhipu_ai_api_base": "https://open.bigmodel.cn/api/paas/v4",  # 智谱AI API地址
-    # Kimi平台配置
+    "zhipu_ai_api_key": "",
+    "zhipu_ai_api_base": "https://open.bigmodel.cn/api/paas/v4",
     "moonshot_api_key": "",
     "moonshot_base_url": "https://api.moonshot.cn/v1/chat/completions",
+    #魔搭社区 平台配置
+    "modelscope_api_key": "",
+    "modelscope_base_url": "https://api-inference.modelscope.cn/v1/chat/completions",
     # LinkAI平台配置
     "use_linkai": False,
     "linkai_api_key": "",
@@ -228,6 +216,18 @@ available_setting = {
     "Minimax_group_id": "",
     "Minimax_base_url": "",
     "web_port": 9899,
+    # WeChatPadPro配置
+    "wechatpadpro_base_url": "http://localhost:1239",
+    "wechatpadpro_admin_key": "12345",
+    "wechatpadpro_user_key": "",
+    "wechatpadpro_ws_url": "ws://localhost:1239/ws/GetSyncMsg",
+    # DPBot配置
+    "dpbot_base_url": "http://127.0.0.1:8059",
+    
+    # 临时文件清理配置
+    "tmp_cleanup_enabled": True,  # 是否启用临时文件自动清理
+    "tmp_cleanup_interval": 3600,  # 清理检查间隔，单位秒（默认1小时）
+    "tmp_file_max_age": 3600,  # 临时文件最大保留时间，单位秒（默认1小时）
 }
 
 
@@ -258,7 +258,7 @@ class Config(dict):
             return default
         except Exception as e:
             raise e
-
+            
     def set(self, key, value):
         try:
             self[key] = value
@@ -430,3 +430,6 @@ def pconf(plugin_name: str) -> dict:
 
 # 全局配置，用于存放全局生效的状态
 global_config = {"admin_users": []}
+
+# 读取配置时只需要 wechatpadpro_base_url
+wechatpadpro_base_url = conf().get("wechatpadpro_base_url")

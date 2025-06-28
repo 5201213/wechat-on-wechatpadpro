@@ -9,6 +9,8 @@ from channel import channel_factory
 from common import const
 from config import load_config
 from plugins import *
+from common.tmp_cleaner import start_tmp_cleaner, stop_tmp_cleaner
+from common.log import logger
 import threading
 
 
@@ -18,6 +20,8 @@ def sigterm_handler_wrap(_signo):
     def func(_signo, _stack_frame):
         logger.info("signal {} received, exiting...".format(_signo))
         conf().save_user_datas()
+        # 停止临时文件清理器
+        stop_tmp_cleaner()
         if callable(old_handler):  #  check old_handler
             return old_handler(_signo, _stack_frame)
         sys.exit(0)
@@ -28,7 +32,7 @@ def sigterm_handler_wrap(_signo):
 def start_channel(channel_name: str):
     channel = channel_factory.create_channel(channel_name)
     if channel_name in ["wx", "wxy", "terminal", "wechatmp","wechatmp_service", "wechatcom_app", "wework",
-                        "wechatcom_service", "gewechat", "web", "wechatpadpro", const.FEISHU, const.DINGTALK]:
+                        "wechatcom_service", "wxpad", "web", "dpbot", const.FEISHU, const.DINGTALK]:
         PluginManager().load_plugins()
 
     if conf().get("use_linkai"):
@@ -59,6 +63,9 @@ def run():
             os.environ["WECHATY_LOG"] = "warn"
 
         start_channel(channel_name)
+        
+        # 启动临时文件清理器
+        start_tmp_cleaner()
 
         while True:
             time.sleep(1)
