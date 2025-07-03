@@ -1,7 +1,5 @@
 # LLM Bot on WeChat (WeChatPadPro Edition)
 
-基于WeChatPadPro协议的wechat-on-wechapadpro项目，此版本为优化版，已修复大部分已知bug（图片上传、语音发送、过滤非用户消息、XML消息发送等）。
-请自行查看WeChatPadPro协议的部署方法，不再赘述。
 本项目基于 `chatgpt-on-wechat` 框架，并深度整合 `WeChatPadPro` 协议，旨在为个人微信账号提供一个稳定、高效、功能丰富的智能对话机器人解决方案。此版本为持续优化版，修复了登录、消息处理中的多个已知问题，并对代码结构进行了重构。
 协议来源: [WeChatPadPro](https://github.com/WeChatPadPro/WeChatPadPro)
 原始框架: [chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)
@@ -166,5 +164,9 @@ wechat-on-wechatpadpro/
 由于本人不会代码，此项目全由ai写作不好的地方欢迎提交Pull Request或Issue来帮助改进本项目！
 
 ---
+
+##交流器
+![b5f35b0052209b43c52f8274c904fc9](https://github.com/user-attachments/assets/eeb0c535-7e1e-493b-b219-08e8e26d8c30)
+
 
 **免责声明**：本项目仅供学习和研究使用，请勿用于商业或违法用途。使用本项目产生的任何后果由用户自行承担。
